@@ -1,7 +1,16 @@
-import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import MainPage from "./pages/MainPage";
 
-function App() {
-  return <></>;
-}
+const App = () => {
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+      </Routes>
+    </>
+  );
+};
 
 export default App;

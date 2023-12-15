@@ -1,0 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@100;400&display=swap");
+
+html,
+body {
+  background-color: #f39b6d;
+  margin: 0px;
+  font-family: "Exo 2", sans-serif;
+}
