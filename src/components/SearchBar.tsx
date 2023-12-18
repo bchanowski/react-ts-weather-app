@@ -36,7 +36,7 @@ const SearchBar = () => {
   }, [searchValue]);
   return (
     <>
-      <Image src={SearchIcon} />
+      <Image src={SearchIcon} alt="Search icon" />
       <Search
         placeholder="Type a city name..."
         value={searchValue}

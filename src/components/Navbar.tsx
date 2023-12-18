@@ -7,7 +7,7 @@ const Container = styled.div`
   justify-content: center;
   padding: 10px;
 `;
-const Title = styled.a`
+const Title = styled.div`
   font-size: 25px;
   text-transform: uppercase;
   color: #3e6990;
@@ -16,14 +16,19 @@ const Image = styled.img`
   width: 30px;
   margin-left: 10px;
 `;
-
+const StyledLink = styled(Link)`
+  text-decoration: "none";
+  color: #3e6990;
+`;
 const Navbar = () => {
   return (
     <Container>
-      <Link to="/" style={{ textDecoration: "none" }}>
-        <Title>Weatheroo</Title>
-        <Image src="/weather-icon.svg" />
-      </Link>
+      <Title>
+        <StyledLink to="/" style={{ textDecoration: "none" }}>
+          Weatheroo
+        </StyledLink>
+      </Title>
+      <Image src="/weather-icon.svg" alt="Weatheroo logo" />
     </Container>
   );
 };
