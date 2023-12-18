@@ -11,6 +11,7 @@ const Search = styled.input`
   font-weight: 800;
   font-size: 30px;
   border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
   text-transform: capitalize;
   &:focus {
     outline: none;
@@ -21,6 +22,7 @@ const Image = styled.img`
   background-color: #e9e3b4;
   width: 30px;
   border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
 `;
 
 const SearchBar = () => {

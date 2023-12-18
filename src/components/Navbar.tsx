@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -19,8 +20,10 @@ const Image = styled.img`
 const Navbar = () => {
   return (
     <Container>
-      <Title>Weatheroo</Title>
-      <Image src="/weather-icon.svg" />
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <Title>Weatheroo</Title>
+        <Image src="/weather-icon.svg" />
+      </Link>
     </Container>
   );
 };
