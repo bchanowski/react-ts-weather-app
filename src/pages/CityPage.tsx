@@ -1,8 +1,7 @@
-import { useParams } from "react-router-dom";
+import CityWeather from "../components/CityWeather";
 
 const CityPage = () => {
-  const { city } = useParams();
-  return <div>{city}</div>;
+  return <CityWeather />;
 };
 
 export default CityPage;

@@ -48,9 +48,9 @@ const SearchResults = ({ searchValue }: Props) => {
                   "/" +
                   city.place_name.split(",")[0] +
                   "/" +
-                  city.geometry.coordinates[0] +
+                  city.geometry.coordinates[1] +
                   "/" +
-                  city.geometry.coordinates[1]
+                  city.geometry.coordinates[0]
                 }
               >
                 {city.place_name}
