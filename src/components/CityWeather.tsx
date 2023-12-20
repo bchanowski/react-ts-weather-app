@@ -7,7 +7,15 @@ import { useParams } from "react-router-dom";
 import { DataWeatherT } from "../utils/types";
 import CurrentWeather from "./CurrentWeather";
 
-const Container = styled.div``;
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const FutureDataCont = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 const CityWeather = () => {
   const [weatherData, setWeatherData] = useState<DataWeatherT>();
@@ -22,9 +30,11 @@ const CityWeather = () => {
     <Container>
       {weatherData && (
         <>
-          <CurrentWeather currentWeatherData={weatherData} />
-          <HourlyWeather hourlyWeatherData={weatherData} />
-          <DailyWeather dailyWeatherData={weatherData} />
+          <CurrentWeather currentWeatherData={weatherData.current} />
+          <FutureDataCont>
+            <HourlyWeather hourlyWeatherData={weatherData.hourly} />
+            <DailyWeather dailyWeatherData={weatherData.daily} />
+          </FutureDataCont>
         </>
       )}
     </Container>

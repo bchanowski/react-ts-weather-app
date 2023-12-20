@@ -8,53 +8,44 @@ export type CitySearchResultT = {
 export type CitiesSearchResultT = CitySearchResultT[];
 
 export type CurrentWeatherDataT = {
-  current: {
-    temp: number;
-    feels_like: number;
-    humidity: number;
-    sunrise: number;
-    sunset: number;
-    wind_speed: number;
-    weather: [
-      {
-        icon: string;
-        description: string;
-      }
-    ];
-  };
+  temp: number;
+  feels_like: number;
+  humidity: number;
+  wind_speed: number;
+  pressure: number;
+  weather: [
+    {
+      icon: string;
+      description: string;
+    }
+  ];
 };
 
 export type HourlyWeatherDataT = {
-  hourly: [
+  temp: number;
+  weather: [
     {
-      temp: number;
-      weather: [
-        {
-          icon: string;
-          description: string;
-        }
-      ];
+      icon: string;
+      description: string;
     }
   ];
 };
 
 export type DailyWeatherDataT = {
-  daily: [
+  temp: {
+    min: number;
+    max: number;
+  };
+  weather: [
     {
-      temp: {
-        min: number;
-        max: number;
-      };
-      weather: [
-        {
-          icon: string;
-          description: string;
-        }
-      ];
+      icon: string;
+      description: string;
     }
   ];
 };
 
-export type DataWeatherT = CurrentWeatherDataT &
-  HourlyWeatherDataT &
-  DailyWeatherDataT;
+export type DataWeatherT = {
+  current: CurrentWeatherDataT;
+  hourly: HourlyWeatherDataT;
+  daily: DailyWeatherDataT;
+};

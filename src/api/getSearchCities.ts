@@ -10,6 +10,7 @@ export const getSearchResults = async (searchValue: string) => {
           import.meta.env.VITE_MAPBOX_API_KEY
         }&types=place`
       );
+      console.log(result.data);
       resultList = result.data.features;
     } catch (err) {
       console.log(err);
