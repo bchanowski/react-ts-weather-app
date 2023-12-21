@@ -32,7 +32,10 @@ const CityWeather = () => {
         <>
           <CurrentWeather currentWeatherData={weatherData.current} />
           <FutureDataCont>
-            <HourlyWeather hourlyWeatherData={weatherData.hourly} />
+            <HourlyWeather
+              hourlyWeatherData={weatherData.hourly}
+              timezone_offset={weatherData.timezone_offset}
+            />
             <DailyWeather dailyWeatherData={weatherData.daily} />
           </FutureDataCont>
         </>

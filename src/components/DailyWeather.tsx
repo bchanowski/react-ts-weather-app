@@ -1,11 +1,12 @@
 import { DailyWeatherDataT } from "../utils/types";
+import { FutureDataContainer } from "./shared/FutureDataElements";
 
 type Props = {
-  dailyWeatherData: DailyWeatherDataT;
+  dailyWeatherData: DailyWeatherDataT[];
 };
 
 const DailyWeather = ({ dailyWeatherData }: Props) => {
-  return <div>DailyWeather</div>;
+  return <FutureDataContainer>DailyWeather</FutureDataContainer>;
 };
 
 export default DailyWeather;

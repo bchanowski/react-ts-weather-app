@@ -9,6 +9,7 @@ export const getCityWeatherData = async (lat: string, lng: string) => {
         import.meta.env.VITE_OPEN_WEATHER_API_KEY
       }&units=metric`
     );
+    console.log(result.data);
     weatherData = result.data;
   } catch (err) {
     console.log("err");

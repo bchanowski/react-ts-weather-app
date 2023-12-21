@@ -9,16 +9,19 @@ type Props = {
 const Container = styled.div`
   height: 85svh;
   margin: 30px;
-  width: 500px;
+  width: 25svw;
   background-color: rgb(0, 0, 0, 0.1);
   border-radius: 15px;
   color: #e9e3b4;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow-x: auto;
 `;
 
 const Title = styled.p`
   display: flex;
   justify-content: center;
-  font-size: 40px;
+  font-size: 35px;
   font-weight: 800;
   text-transform: capitalize;
 `;
@@ -37,7 +40,7 @@ const InfoContainer = styled.div`
 `;
 
 const Text = styled.p`
-  font-size: 25px;
+  font-size: 20px;
   margin: 5px;
 `;
 

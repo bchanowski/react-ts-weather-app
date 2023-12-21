@@ -5,6 +5,13 @@ export type CitySearchResultT = {
   };
 };
 
+type WeatherT = [
+  {
+    icon: string;
+    description: string;
+  }
+];
+
 export type CitiesSearchResultT = CitySearchResultT[];
 
 export type CurrentWeatherDataT = {
@@ -13,22 +20,13 @@ export type CurrentWeatherDataT = {
   humidity: number;
   wind_speed: number;
   pressure: number;
-  weather: [
-    {
-      icon: string;
-      description: string;
-    }
-  ];
+  weather: WeatherT;
 };
 
 export type HourlyWeatherDataT = {
   temp: number;
-  weather: [
-    {
-      icon: string;
-      description: string;
-    }
-  ];
+  dt: bigint;
+  weather: WeatherT;
 };
 
 export type DailyWeatherDataT = {
@@ -36,16 +34,13 @@ export type DailyWeatherDataT = {
     min: number;
     max: number;
   };
-  weather: [
-    {
-      icon: string;
-      description: string;
-    }
-  ];
+  dt: bigint;
+  weather: WeatherT;
 };
 
 export type DataWeatherT = {
   current: CurrentWeatherDataT;
-  hourly: HourlyWeatherDataT;
-  daily: DailyWeatherDataT;
+  hourly: HourlyWeatherDataT[];
+  daily: DailyWeatherDataT[];
+  timezone_offset: number;
 };
