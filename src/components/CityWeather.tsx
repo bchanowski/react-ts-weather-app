@@ -36,7 +36,10 @@ const CityWeather = () => {
               hourlyWeatherData={weatherData.hourly}
               timezone_offset={weatherData.timezone_offset}
             />
-            <DailyWeather dailyWeatherData={weatherData.daily} />
+            <DailyWeather
+              dailyWeatherData={weatherData.daily}
+              timezone_offset={weatherData.timezone_offset}
+            />
           </FutureDataCont>
         </>
       )}

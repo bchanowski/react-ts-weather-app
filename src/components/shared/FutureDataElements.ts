@@ -8,15 +8,13 @@ export const FutureDataContainer = styled.div`
   margin: 30px;
   color: #e9e3b4;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex-direction: row;
-  flex-wrap: nowrap;
-  white-space: nowrap;
   overflow-x: auto;
 `;
 
 export const FutureDataTitle = styled.p`
-  font-size: 30px;
+  font-size: 25px;
   margin-top: 50px;
   font-weight: 800;
 `;
@@ -25,6 +23,9 @@ export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-wrap: nowrap;
+  margin-left: 10px;
+  margin-right: 5px;
 `;
 
 export const FutureDataImage = styled.img`
