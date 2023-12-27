@@ -44,3 +44,8 @@ export type DataWeatherT = {
   daily: DailyWeatherDataT[];
   timezone_offset: number;
 };
+
+export type StorageWeatherT = {
+  city: string;
+  coords: [string, string];
+};
