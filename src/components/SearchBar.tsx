@@ -3,6 +3,10 @@ import SearchIcon from "../assets/search-icon.svg";
 import SearchResults from "./SearchResults";
 import { useEffect, useState } from "react";
 
+const Container = styled.div`
+  display: flex;
+`;
+
 const Search = styled.input`
   width: 500px;
   border: 0px;
@@ -35,7 +39,7 @@ const SearchBar = () => {
     return () => clearTimeout(timeoutId);
   }, [searchValue]);
   return (
-    <>
+    <Container>
       <Image src={SearchIcon} alt="Search icon" />
       <Search
         placeholder="Type a city name..."
@@ -43,7 +47,7 @@ const SearchBar = () => {
         onChange={(e) => setSearchValue(e.currentTarget.value)}
       />
       <SearchResults searchValue={debouncedSearchValue} />
-    </>
+    </Container>
   );
 };
 
