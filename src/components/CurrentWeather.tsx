@@ -45,10 +45,12 @@ const Text = styled.p`
 `;
 
 const CurrentWeather = ({ currentWeatherData }: Props) => {
-  const { city } = useParams();
+  const { city, country } = useParams();
   return (
     <Container>
-      <Title>{city}</Title>
+      <Title>
+        {city}, {country?.toUpperCase()}
+      </Title>
       <Title>{Math.round(currentWeatherData.temp)}&deg;</Title>
       <Image
         src={"/" + currentWeatherData.weather[0].icon + ".svg"}

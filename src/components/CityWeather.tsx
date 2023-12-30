@@ -33,7 +33,7 @@ const AddToStorage = styled.p`
 const CityWeather = () => {
   const [weatherData, setWeatherData] = useState<DataWeatherT>();
   const [favouriteCities, setFavouriteCities] = useState<StorageWeatherT[]>([]);
-  const { city, lat, lng } = useParams();
+  const { city, country, lat, lng } = useParams();
   useEffect(() => {
     const getData = async () => {
       if (lat && lng) setWeatherData(await getCityWeatherData(lat, lng));
@@ -45,9 +45,10 @@ const CityWeather = () => {
   const addCityToStorage = () => {
     let favCities: StorageWeatherT[] = [];
     favCities = favouriteCities;
-    if (city && lat && lng) {
+    if (city && country && lat && lng) {
       const dataToAdd: StorageWeatherT = {
         city,
+        country,
         coords: [lat, lng],
       };
       favCities.push(dataToAdd);

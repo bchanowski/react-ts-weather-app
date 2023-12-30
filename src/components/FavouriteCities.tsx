@@ -6,6 +6,7 @@ import styled from "styled-components";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin-top: 30px;
   height: 80svh;
   width: 25svw;
@@ -22,10 +23,16 @@ const FavouriteCities = () => {
     setFavCities(localData !== null ? JSON.parse(localData) : "");
   }, []);
   return (
-    <Container>
-      {favCities.length !== 0 &&
-        favCities.map((city) => <RecommendTab cityData={city} />)}
-    </Container>
+    <>
+      {favCities.length !== 0 && (
+        <Container>
+          <h1>Favourite Cities</h1>
+          {favCities.map((city) => (
+            <RecommendTab cityData={city} />
+          ))}
+        </Container>
+      )}
+    </>
   );
 };
 

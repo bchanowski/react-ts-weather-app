@@ -3,6 +3,7 @@ export type CitySearchResultT = {
   geometry: {
     coordinates: [number, number];
   };
+  context: [{ short_code: string }, { short_code: string }];
 };
 
 type WeatherT = [
@@ -47,5 +48,6 @@ export type DataWeatherT = {
 
 export type StorageWeatherT = {
   city: string;
+  country: string;
   coords: [string, string];
 };

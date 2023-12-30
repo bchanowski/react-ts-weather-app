@@ -24,12 +24,14 @@ const StyledLink = styled(Link)`
   align-items: center;
   margin: 20px;
   height: 12svh;
+  width: 80%;
   background-color: #f39b6d;
   border-radius: 15px;
   color: #e9e3b4;
   &:hover {
     height: 15svh;
-    margin: 6px;
+    width: 85%;
+    margin: 18px;
     transition: 0.25s ease-out;
   }
 `;
@@ -51,6 +53,8 @@ const RecommendTab = ({ cityData }: Props) => {
         "/" +
         cityData.city +
         "/" +
+        cityData.country +
+        "/" +
         cityData.coords[0] +
         "/" +
         cityData.coords[1]
@@ -62,7 +66,9 @@ const RecommendTab = ({ cityData }: Props) => {
             src={"/" + weatherData?.current.weather[0].icon + ".svg"}
             alt={"Icon for " + weatherData?.current.weather[0].description}
           />
-          <Text>{cityData.city}</Text>
+          <Text>
+            {cityData.city}, {cityData.country.toUpperCase()}
+          </Text>
           <Text>
             {weatherData?.current.temp && Math.round(weatherData.current.temp)}
             &deg;

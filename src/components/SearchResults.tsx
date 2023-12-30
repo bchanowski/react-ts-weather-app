@@ -48,6 +48,8 @@ const SearchResults = ({ searchValue }: Props) => {
                   "/" +
                   city.place_name.split(",")[0] +
                   "/" +
+                  city.context[1].short_code +
+                  "/" +
                   city.geometry.coordinates[1] +
                   "/" +
                   city.geometry.coordinates[0]
