@@ -28,12 +28,6 @@ const StyledLink = styled(Link)`
   background-color: #f39b6d;
   border-radius: 15px;
   color: #e9e3b4;
-  &:hover {
-    height: 15svh;
-    width: 85%;
-    margin: 18px;
-    transition: 0.25s ease-out;
-  }
 `;
 
 const RecommendTab = ({ cityData }: Props) => {

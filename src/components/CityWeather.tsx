@@ -41,7 +41,7 @@ const CityWeather = () => {
     getData();
     const localData = localStorage.getItem("favouriteCities");
     setFavouriteCities(localData !== null ? JSON.parse(localData) : []);
-  }, [lat, lng]);
+  }, [lat, lng, favouriteCities]);
   const addCityToStorage = () => {
     let favCities: StorageWeatherT[] = [];
     favCities = favouriteCities;
@@ -53,6 +53,7 @@ const CityWeather = () => {
       };
       favCities.push(dataToAdd);
       localStorage.setItem("favouriteCities", JSON.stringify(favCities));
+      setFavouriteCities(favCities);
     }
   };
   return (
