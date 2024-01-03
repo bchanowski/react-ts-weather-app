@@ -29,15 +29,16 @@ const Tab = styled.div`
 `;
 const FavouriteCities = () => {
   const [favCities, setFavCities] = useState<StorageWeatherT[]>([]);
+  const [wasRemoved, setWasRemoved] = useState(false);
   const localData = localStorage.getItem("favouriteCities");
   useEffect(() => {
     setFavCities(localData !== null ? JSON.parse(localData) : "");
-  }, [localData, favCities]);
+  }, [localData, wasRemoved]);
   const removeCity = (index: number) => {
     const newData = favCities;
     newData.splice(index, 1);
     localStorage.setItem("favouriteCities", JSON.stringify(newData));
-    setFavCities(newData);
+    setWasRemoved((value) => !value);
   };
   return (
     <>
@@ -45,7 +46,7 @@ const FavouriteCities = () => {
         <Container>
           <h1>Favourite Cities</h1>
           {favCities.map((city, index) => (
-            <Tab>
+            <Tab key={index}>
               <RecommendTab cityData={city} />
               <Remove onClick={() => removeCity(index)}>X</Remove>
             </Tab>

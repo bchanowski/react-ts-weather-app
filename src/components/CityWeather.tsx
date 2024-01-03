@@ -33,15 +33,17 @@ const AddToStorage = styled.p`
 const CityWeather = () => {
   const [weatherData, setWeatherData] = useState<DataWeatherT>();
   const [favouriteCities, setFavouriteCities] = useState<StorageWeatherT[]>([]);
+  const [wasAdded, SetWasAdded] = useState(false);
   const { city, country, lat, lng } = useParams();
   useEffect(() => {
     const getData = async () => {
       if (lat && lng) setWeatherData(await getCityWeatherData(lat, lng));
     };
     getData();
+    console.log(2);
     const localData = localStorage.getItem("favouriteCities");
     setFavouriteCities(localData !== null ? JSON.parse(localData) : []);
-  }, [lat, lng, favouriteCities]);
+  }, [lat, lng]);
   const addCityToStorage = () => {
     let favCities: StorageWeatherT[] = [];
     favCities = favouriteCities;
@@ -53,12 +55,13 @@ const CityWeather = () => {
       };
       favCities.push(dataToAdd);
       localStorage.setItem("favouriteCities", JSON.stringify(favCities));
-      setFavouriteCities(favCities);
+      SetWasAdded(true);
     }
   };
   return (
     <>
-      {favouriteCities.findIndex((value) => value.city === city) === -1 && (
+      {(favouriteCities.findIndex((value) => value.city === city) === -1 ||
+        !wasAdded) && (
         <AddToStorage onClick={() => addCityToStorage()}>
           Add To Favoritues
         </AddToStorage>
