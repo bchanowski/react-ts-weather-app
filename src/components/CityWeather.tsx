@@ -40,7 +40,6 @@ const CityWeather = () => {
       if (lat && lng) setWeatherData(await getCityWeatherData(lat, lng));
     };
     getData();
-    console.log(2);
     const localData = localStorage.getItem("favouriteCities");
     setFavouriteCities(localData !== null ? JSON.parse(localData) : []);
   }, [lat, lng]);

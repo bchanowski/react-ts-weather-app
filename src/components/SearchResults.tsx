@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getSearchResults } from "../api/getSearchCities";
-import { CitiesSearchResultT } from "../utils/types";
+import {
+  CitiesSearchResultT,
+  CitySearchResultT,
+  StorageWeatherT,
+} from "../utils/types";
 import { Link } from "react-router-dom";
 
 type Props = {
@@ -36,7 +40,23 @@ const SearchResults = ({ searchValue }: Props) => {
     };
     fetchCitiesList();
   }, [searchValue]);
-
+  const addToHistory = (city: CitySearchResultT) => {
+    let favCities: StorageWeatherT[] = [];
+    const localData = localStorage.getItem("citiesHistory");
+    favCities = localData !== null ? JSON.parse(localData) : [];
+    if (city) {
+      const dataToAdd: StorageWeatherT = {
+        city: city.place_name.split(",")[0],
+        country: city.context[1].short_code,
+        coords: [
+          city.geometry.coordinates[1].toString(),
+          city.geometry.coordinates[0].toString(),
+        ],
+      };
+      favCities.push(dataToAdd);
+      localStorage.setItem("citiesHistory", JSON.stringify(favCities));
+    }
+  };
   return (
     <>
       {cityResults.length !== 0 && (
@@ -54,6 +74,7 @@ const SearchResults = ({ searchValue }: Props) => {
                   "/" +
                   city.geometry.coordinates[0]
                 }
+                onClick={() => addToHistory(city)}
               >
                 {city.place_name}
               </StyledLink>
