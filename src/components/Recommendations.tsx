@@ -1,12 +1,20 @@
+import styled from "styled-components";
 import FavouriteCities from "./FavouriteCities";
+import HistoryCities from "./HistoryCities";
 import PopularCities from "./PopularCities";
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 5svw;
+`;
 const Recommendations = () => {
   return (
-    <div>
+    <Container>
       <FavouriteCities />
       <PopularCities />
-    </div>
+      <HistoryCities />
+    </Container>
   );
 };
 

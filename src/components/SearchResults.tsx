@@ -41,20 +41,23 @@ const SearchResults = ({ searchValue }: Props) => {
     fetchCitiesList();
   }, [searchValue]);
   const addToHistory = (city: CitySearchResultT) => {
-    let favCities: StorageWeatherT[] = [];
+    let citiesHistory: StorageWeatherT[] = [];
     const localData = localStorage.getItem("citiesHistory");
-    favCities = localData !== null ? JSON.parse(localData) : [];
+    citiesHistory = localData !== null ? JSON.parse(localData) : [];
     if (city) {
       const dataToAdd: StorageWeatherT = {
         city: city.place_name.split(",")[0],
-        country: city.context[1].short_code,
+        country: city.context[1]
+          ? city.context[1].short_code
+          : city.context[0].short_code,
         coords: [
           city.geometry.coordinates[1].toString(),
           city.geometry.coordinates[0].toString(),
         ],
       };
-      favCities.push(dataToAdd);
-      localStorage.setItem("citiesHistory", JSON.stringify(favCities));
+      if (citiesHistory.length >= 9) citiesHistory.pop();
+      citiesHistory.unshift(dataToAdd);
+      localStorage.setItem("citiesHistory", JSON.stringify(citiesHistory));
     }
   };
   return (
@@ -68,7 +71,9 @@ const SearchResults = ({ searchValue }: Props) => {
                   "/" +
                   city.place_name.split(",")[0] +
                   "/" +
-                  city.context[1].short_code +
+                  (city.context[1]
+                    ? city.context[1].short_code
+                    : city.context[0].short_code) +
                   "/" +
                   city.geometry.coordinates[1] +
                   "/" +

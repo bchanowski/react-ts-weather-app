@@ -9,7 +9,6 @@ type Props = {
 };
 
 const Text = styled.p`
-  padding: 15px;
   font-size: 25px;
 `;
 
@@ -22,9 +21,10 @@ const StyledLink = styled(Link)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px;
+  gap: 5px;
+  width: 99%;
+  margin: 5px;
   height: 12svh;
-  width: 80%;
   background-color: #f39b6d;
   border-radius: 15px;
   color: #e9e3b4;
