@@ -19,6 +19,9 @@ const CitiesList = styled.ul`
   padding-top: 15px;
   border-radius: 15px;
   padding-bottom: 15px;
+  @media screen and (max-width: 600px) {
+    width: 75svw;
+  }
 `;
 const City = styled.li`
   list-style-type: none;

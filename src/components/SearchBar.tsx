@@ -20,6 +20,11 @@ const Search = styled.input`
   &:focus {
     outline: none;
   }
+  @media screen and (max-width: 600px) {
+    width: 70svw;
+    font-size: 20px;
+    font-weight: 500;
+  }
 `;
 const Image = styled.img`
   padding: 15px;

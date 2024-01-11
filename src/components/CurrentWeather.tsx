@@ -16,6 +16,13 @@ const Container = styled.div`
   flex-wrap: nowrap;
   white-space: nowrap;
   overflow-x: auto;
+  @media screen and (max-width: 1500px) {
+    width: 50svw;
+    margin: 20px;
+  }
+  @media screen and (max-width: 750px) {
+    width: 90svw;
+  }
 `;
 
 const Title = styled.p`
@@ -24,6 +31,8 @@ const Title = styled.p`
   font-size: 35px;
   font-weight: 800;
   text-transform: capitalize;
+  white-space: normal;
+  word-wrap: break-word;
 `;
 
 const Image = styled.img`

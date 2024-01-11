@@ -11,6 +11,12 @@ export const FutureDataContainer = styled.div`
   justify-content: space-between;
   flex-direction: row;
   overflow-x: auto;
+  @media screen and (max-width: 1500px) {
+    width: 50svw;
+  }
+  @media screen and (max-width: 750px) {
+    width: 90svw;
+  }
 `;
 
 export const FutureDataTitle = styled.p`
