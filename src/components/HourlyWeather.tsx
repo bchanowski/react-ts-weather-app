@@ -5,6 +5,7 @@ import {
   FutureDataImage,
   FutureDataTitle,
   InfoContainer,
+  SkeletonImageFt,
 } from "./shared/FutureDataElements";
 
 type Props = {
@@ -14,6 +15,7 @@ type Props = {
 
 const HourlyWeather = ({ hourlyWeatherData, timezone_offset }: Props) => {
   const [hourDate, setHourDate] = useState<Date[]>([]);
+  const [loaded, setLoaded] = useState(false);
   useEffect(() => {
     const localOffset = new Date().getTimezoneOffset() * 60000;
 
@@ -32,9 +34,12 @@ const HourlyWeather = ({ hourlyWeatherData, timezone_offset }: Props) => {
               ? hourDate[key].getHours() + ":00"
               : "Now"}
           </FutureDataTitle>
+          {!loaded && <SkeletonImageFt />}
           <FutureDataImage
             src={"/" + hour.weather[0].icon + ".svg"}
             alt={"Icon for " + hour.weather[0].description}
+            onLoad={() => setLoaded(true)}
+            hidden={!loaded}
           />
           <FutureDataTitle>{Math.round(hour.temp)}&deg;</FutureDataTitle>
         </InfoContainer>

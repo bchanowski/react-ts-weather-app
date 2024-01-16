@@ -1,8 +1,9 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { DataWeatherT, StorageWeatherT } from "../utils/types";
 import { useEffect, useState } from "react";
 import { getCityWeatherData } from "../api/getCityWeatherData";
 import { Link } from "react-router-dom";
+import { skeletonAnimation } from "./shared/SkeletonAnimation";
 
 type Props = {
   cityData: StorageWeatherT;
@@ -10,11 +11,16 @@ type Props = {
 
 const Text = styled.p`
   font-size: 25px;
+  width: 20%;
+`;
+
+const City = styled(Text)`
+  width: 50%;
 `;
 
 const Image = styled.img`
-  width: 8svw;
-  height: 8svw;
+  width: 30%;
+  height: 70%;
 `;
 
 const StyledLink = styled(Link)`
@@ -30,18 +36,10 @@ const StyledLink = styled(Link)`
   border-radius: 15px;
   color: #e9e3b4;
 `;
-const skeletonAnimation = keyframes`
-  0% {
-    background-color: rgb(0, 0, 0, 0.1);
-  }
-  100% {
-    background-color: rgb(0, 0, 0, 0.5);
-  }
-`;
 const SkeletonImage = styled.div`
-  width: 6svw;
-  height: 6svw;
-  border-radius: 50%;
+  width: 30%;
+  height: 70%;
+  border-radius: 10px;
   animation: ${skeletonAnimation} 1s linear infinite alternate;
 `;
 const RecommendTab = ({ cityData }: Props) => {
@@ -78,9 +76,9 @@ const RecommendTab = ({ cityData }: Props) => {
             onLoad={() => setLoaded(true)}
             hidden={!loaded}
           />
-          <Text>
+          <City>
             {cityData.city}, {cityData.country.toUpperCase()}
-          </Text>
+          </City>
           <Text>
             {weatherData?.current.temp && Math.round(weatherData.current.temp)}
             &deg;

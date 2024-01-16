@@ -10,7 +10,7 @@ export const RecommendContainer = styled.div`
   background-color: rgb(0, 0, 0, 0.1);
   border-radius: 15px;
   color: #e9e3b4;
-  overflow: scroll;
+  overflow: auto;
   @media screen and (max-width: 1050px) {
     width: 70svw;
     height: auto;
