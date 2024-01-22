@@ -39,7 +39,7 @@ const StyledLink = styled(Link)`
 const SkeletonImage = styled.div`
   width: 30%;
   height: 70%;
-  border-radius: 10px;
+  border-radius: 20px;
   animation: ${skeletonAnimation} 1s linear infinite alternate;
 `;
 const RecommendTab = ({ cityData }: Props) => {
@@ -79,10 +79,14 @@ const RecommendTab = ({ cityData }: Props) => {
           <City>
             {cityData.city}, {cityData.country.toUpperCase()}
           </City>
-          <Text>
-            {weatherData?.current.temp && Math.round(weatherData.current.temp)}
-            &deg;
-          </Text>
+          {weatherData?.current.temp ? (
+            <Text>
+              {Math.round(weatherData.current.temp)}
+              &deg;
+            </Text>
+          ) : (
+            <SkeletonImage />
+          )}
         </>
       )}
     </StyledLink>
