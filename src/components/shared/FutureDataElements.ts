@@ -27,6 +27,9 @@ export const FutureDataTitle = styled.p`
   width: 10svw;
   display: flex;
   justify-content: center;
+  @media screen and (max-width: 1080px) {
+    width: 20svw;
+  }
 `;
 
 export const InfoContainer = styled.div`
