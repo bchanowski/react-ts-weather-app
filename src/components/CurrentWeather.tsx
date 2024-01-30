@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { CurrentWeatherDataT } from "../utils/types";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
-import { skeletonAnimation } from "./shared/SkeletonAnimation";
 
 type Props = {
   currentWeatherData: CurrentWeatherDataT;
@@ -44,16 +42,6 @@ const Image = styled.img`
   height: 250px;
 `;
 
-const SkeletonImage = styled.div`
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 60%;
-  height: 250px;
-  border-radius: 15px;
-  animation: ${skeletonAnimation} 1s linear infinite alternate;
-`;
-
 const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -67,19 +55,15 @@ const Text = styled.p`
 
 const CurrentWeather = ({ currentWeatherData }: Props) => {
   const { city, country } = useParams();
-  const [loaded, setLoaded] = useState(false);
   return (
     <Container>
       <Title>
         {city}, {country?.toUpperCase()}
       </Title>
       <Title>{Math.round(currentWeatherData.temp)}&deg;</Title>
-      {!loaded && <SkeletonImage />}
       <Image
         src={"/" + currentWeatherData.weather[0].icon + ".svg"}
         alt={"Icon for " + currentWeatherData.weather[0].description}
-        onLoad={() => setLoaded(true)}
-        hidden={!loaded}
       />
       <Title>{currentWeatherData.weather[0].description}</Title>
       <InfoContainer>

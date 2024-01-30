@@ -32,7 +32,7 @@ const FavouriteCities = () => {
     <>
       {favCities.length !== 0 && favCities !== null && (
         <RecommendContainer>
-          <h1>Favourite Cities</h1>
+          <h1 className={"position: fixed"}>Favourite Cities</h1>
           {favCities.map((city, index) => (
             <Tab key={index}>
               <RecommendTab cityData={city} />

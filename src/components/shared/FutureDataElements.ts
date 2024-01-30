@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { skeletonAnimation } from "./SkeletonAnimation";
 
 export const FutureDataContainer = styled.div`
   background-color: rgb(0, 0, 0, 0.1);
@@ -46,14 +45,4 @@ export const FutureDataImage = styled.img`
   margin-left: auto;
   margin-right: auto;
   height: 100px;
-`;
-
-export const SkeletonImageFt = styled.div`
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  height: 100px;
-  border-radius: 15px;
-  animation: ${skeletonAnimation} 1s linear infinite alternate;
 `;

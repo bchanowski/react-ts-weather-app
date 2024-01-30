@@ -1,7 +1,10 @@
 import axios from "axios";
 import { DataWeatherT } from "../utils/types";
 
-export const getCityWeatherData = async (lat: string, lng: string) => {
+export const getCityWeatherData = async (
+  lat: string | undefined,
+  lng: string | undefined
+): Promise<DataWeatherT> => {
   let weatherData: DataWeatherT = {} as DataWeatherT;
   try {
     const result = await axios.get(

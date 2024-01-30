@@ -5,7 +5,6 @@ import {
   FutureDataImage,
   FutureDataTitle,
   InfoContainer,
-  SkeletonImageFt,
 } from "./shared/FutureDataElements";
 
 type Props = {
@@ -15,7 +14,6 @@ type Props = {
 
 const DailyWeather = ({ dailyWeatherData, timezone_offset }: Props) => {
   const [dayDate, setDayDate] = useState<Date[]>([]);
-  const [loaded, setLoaded] = useState(false);
   const dayNames = [
     "Sunday",
     "Monday",
@@ -42,12 +40,9 @@ const DailyWeather = ({ dailyWeatherData, timezone_offset }: Props) => {
               ? dayNames[dayDate[key].getDay()]
               : "Today"}
           </FutureDataTitle>
-          {!loaded && <SkeletonImageFt />}
           <FutureDataImage
             src={"/" + day.weather[0].icon + ".svg"}
             alt={"Icon for " + day.weather[0].description}
-            onLoad={() => setLoaded(true)}
-            hidden={!loaded}
           />
           <FutureDataTitle>
             {Math.round(day.temp.max)}&deg; / {Math.round(day.temp.min)}&deg;

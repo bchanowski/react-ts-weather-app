@@ -6,6 +6,8 @@ import { getCityWeatherData } from "../api/getCityWeatherData";
 import { useParams } from "react-router-dom";
 import { DataWeatherT, StorageWeatherT } from "../utils/types";
 import CurrentWeather from "./CurrentWeather";
+import { useQuery } from "@tanstack/react-query";
+import LoadingSpinner from "./shared/LoadingSpinner";
 
 const Container = styled.div`
   display: flex;
@@ -36,18 +38,17 @@ const AddToStorage = styled.p`
 `;
 
 const CityWeather = () => {
-  const [weatherData, setWeatherData] = useState<DataWeatherT>();
   const [favouriteCities, setFavouriteCities] = useState<StorageWeatherT[]>([]);
   const [wasAdded, SetWasAdded] = useState(false);
   const { city, country, lat, lng } = useParams();
   useEffect(() => {
-    const getData = async () => {
-      if (lat && lng) setWeatherData(await getCityWeatherData(lat, lng));
-    };
-    getData();
     const localData = localStorage.getItem("favouriteCities");
     setFavouriteCities(localData !== null ? JSON.parse(localData) : []);
-  }, [lat, lng]);
+  }, []);
+  const { data: weatherData, isLoading } = useQuery<DataWeatherT>({
+    queryKey: ["weatherData"],
+    queryFn: () => getCityWeatherData(lat, lng),
+  });
   const addCityToStorage = () => {
     let favCities: StorageWeatherT[] = [];
     favCities = favouriteCities;
@@ -71,6 +72,7 @@ const CityWeather = () => {
         </AddToStorage>
       )}
       <Container>
+        {isLoading && <LoadingSpinner />}
         {weatherData && (
           <>
             <CurrentWeather currentWeatherData={weatherData.current} />
