@@ -7,6 +7,8 @@ It uses:
 - Styled Components
 - Axios
 - React Router
+- React Query
+- Vite
 ### Main Page  
 On main page there is a search bar allowing users to look for their city of choice, as well as three recommendations tabs:  
 - Favourite Cities - shows cities that user added as his favoritues (saved in local storage)
